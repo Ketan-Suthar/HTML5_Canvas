@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Canvas
+	</title>
+</head>
+<body>
+	<canvas id="c" width="200" height="200">
+		
+	</canvas>
+
+	<script type="text/javascript">
+		var c = document.querySelector("#c");
+		var ctx = c.getContext("2d");
+
+		var image = new Image();
+
+		image.onload = ()=>
+		{
+			console.log("image loaded");
+			ctx.drawImage(image, 0, 0, c.width, c.height);
+			// var savedImage = c.toDataURL();
+			// window.open(savedImage);
+		}
+		image.src = "rick.jpg";
+	</script>
+</body>
+</html>

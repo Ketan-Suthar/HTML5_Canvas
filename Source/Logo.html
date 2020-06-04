@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Rusty Rocords Logo</title>
+	<style>
+	  body
+	  {
+	    margin: 0;
+	  }
+	</style>
+</head>
+<body>
+	<canvas>
+		
+	</canvas>
+	<script>
+		const canvas = document.querySelector('canvas')
+		const c = canvas.getContext('2d')
+
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+
+		const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66']
+
+		function randomIntFromRange(min, max)
+		{
+		  return Math.floor(Math.random() * (max - min + 1) + min)
+		}
+
+		function randomColor(colors)
+		{
+		  return colors[Math.floor(Math.random() * colors.length)]
+		}
+
+		const mouse = {
+		  x: window.innerWidth / 2,
+		  y: window.innerHeight / 2
+		}
+
+		// Event Listeners
+		addEventListener('mousemove', (event) => {
+		  mouse.x = event.clientX
+		  mouse.y = event.clientY
+		})
+
+		addEventListener('resize', () => {
+		  canvas.width = window.innerWidth
+		  canvas.height = window.innerHeight
+
+		  // init()
+		})
+
+		function DrawAcetateDisc(X,Y,Radius)
+		{
+			c.fillStyle = "Black";
+			c.beginPath();
+			c.arc(X, Y, Radius, 2 * Math.PI, false);
+			c.fill();
+
+			c.beginPath();
+			c.fillStyle = "white";
+			c.arc(X, Y, Radius/2, 2 * Math.PI, false);
+			c.fill();
+
+			c.beginPath();
+			c.fillStyle = "Black";
+			c.arc(X, Y, Radius/10, 2 * Math.PI, false);
+			c.fill();
+
+			c.beginPath();
+			c.strokeStyle = "Blue";
+			c.lineWidth = Radius/5;
+			let newX = (((X+(Radius/10)) + (X+(Radius/2)))/2);
+			c.moveTo(newX, Y);
+
+			newX = X + Radius;
+			var newY = Y - Radius - (Radius/10);
+
+			c.lineTo(newX, newY);
+			c.stroke();
+
+			c.beginPath();
+			c.strokeStyle = "Black";
+			c.moveTo(75,25);
+
+			// c.quadraticCurveTo(50,120,30,125);
+			// c.quadraticCurveTo(60,120,65,100);
+			
+			// c.stroke();			
+
+			// c.beginPath();
+			c.strokeStyle = "Blue";
+			
+			c.moveTo(newX, newY);
+			c.quadraticCurveTo(newX,newY,newX+5,newY+10);
+			// for(let i=0; i<=15; i++)
+			// {
+			// 	c.lineTo(newX + Math.sin(i * 0.01)*100, newY + Math.sin(i * 0.01)*100);
+			// }
+			c.stroke();
+		}
+
+		DrawAcetateDisc(canvas.width/2, canvas.height/2, canvas.width*0.02);
+
+
+		// c.beginPath();
+		// c.strokeStyle = "Black";
+		// c.moveTo(75,25);
+		// c.quadraticCurveTo(25,25,25,62.5);
+		// c.quadraticCurveTo(25,100,50,100);
+		// c.quadraticCurveTo(50,120,30,125);
+		// c.quadraticCurveTo(60,120,65,100);
+		// c.quadraticCurveTo(125,100,125,62.5);
+		// c.quadraticCurveTo(125,25,75,25);
+		// c.stroke();
+	</script>
+</body>
+</html>

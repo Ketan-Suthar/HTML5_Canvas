@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Rusty Rocords Logo</title>
+	<style>
+	  body
+	  {
+	    margin: 0;
+	    background: #3586ff;
+	  }
+	</style>
+</head>
+<body>
+	<canvas>
+		
+	</canvas>
+	<script>
+		const canvas = document.querySelector('canvas')
+		const c = canvas.getContext('2d')
+
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+
+
+		addEventListener('resize', () => {
+		  canvas.width = window.innerWidth
+		  canvas.height = window.innerHeight
+
+		  DrawLogo();
+		})
+
+		DrawLogo();
+
+		function DrawLogo()
+		{
+			DrawSqaure();
+			
+			var X = 40, Y = 40, Radius = 22;
+			DrawBackgroundCircles(X,Y);
+			c.fillStyle = "rgba(255,255,255,0.87)";
+			c.beginPath();
+			c.arc(X, Y, Radius, 2 * Math.PI, false);
+			c.fill();
+			console.log(parseInt(Radius));
+
+			var grd = c.createLinearGradient(0, 0, 200, 0);
+			grd.addColorStop(0, "#064469");
+			grd.addColorStop(1, "#8D18FF");
+
+			c.beginPath();
+			c.strokeStyle = grd;
+			c.fillStyle = grd;
+			c.lineWidth = Radius/8;
+
+			let newX = X-(Radius/2.5);
+			let newY = (Y+Radius/3);
+
+			c.ellipse(newX-1, newY+1, 3, 4, Math.PI / 2, 0, 2 * Math.PI);
+			c.fill();
+
+			c.beginPath();
+			c.strokeStyle = grd;
+
+			c.moveTo(newX+2, newY);
+
+			newY = Y-(Radius/3);
+
+			c.lineTo(newX+5,newY);
+
+			newX = X+(Radius/3)
+			c.lineTo(newX+2, newY-4);
+
+			newY = (Y+Radius/3);
+			c.lineTo(newX-1, newY-4);
+			c.stroke();
+
+			c.beginPath();
+			c.fillStyle =grd;
+			c.ellipse(newX-4, newY-3, 3, 4, Math.PI / 2, 0, 2 * Math.PI);
+			c.fill();
+		}
+
+		function DrawSqaure()
+		{
+			var rectX = 10;
+			var rectY = 10;
+			var rectWidth = 60;
+			var rectHeight = 60;
+			var cornerRadius = 20;
+
+			// Set faux rounded corners
+			c.fillStyle = "White";
+			c.strokeStyle = "White";
+			c.lineJoin = "round";
+			c.lineWidth = cornerRadius;
+
+			// Change origin and dimensions to match true size (a stroke makes /the shape a bit larger)
+			c.strokeRect(rectX+(cornerRadius/2), rectY+(cornerRadius/2), rectWidth-cornerRadius, rectHeight-cornerRadius);
+			c.fillRect(rectX+(cornerRadius/2), rectY+(cornerRadius/2), rectWidth-cornerRadius, rectHeight-cornerRadius);
+		}
+
+		function DrawBackgroundCircles(X,Y)
+		{
+			c.fillStyle = "rgba(0,255,0,0.4)";
+			c.beginPath();
+			c.arc(X-15, Y-15, 10, 2 * Math.PI, false);
+			c.fill();
+
+			c.fillStyle = "rgba(255,255,0,0.6)";
+			c.beginPath();
+			c.arc(X, Y-12, 15, 2 * Math.PI, false);
+			c.fill();
+
+			c.fillStyle = "rgba(255,0,0,0.6)";
+			c.beginPath();
+			c.arc(X-14, Y, 15, 2 * Math.PI, false);
+			c.fill();
+
+			c.fillStyle = "rgba(0,0,255,0.6)";
+			c.beginPath();
+			c.arc(X, Y+14, 15, 2 * Math.PI, false);
+			c.fill();
+
+			c.fillStyle = "rgba(14,150,250,0.6)";
+			c.beginPath();
+			c.arc(X+14, Y, 15, 2 * Math.PI, false);
+			c.fill();
+
+			c.fillStyle = "rgba(0,150,250,0.6)";
+			c.beginPath();
+			c.arc(X+14, Y+14, 10, 2 * Math.PI, false);
+			c.fill();
+
+			c.fillStyle = "rgba(150,0,250,0.6)";
+			c.beginPath();
+			c.arc(X+14, Y-14, 10, 2 * Math.PI, false);
+			c.fill();
+
+			c.fillStyle = "rgba(150,0,250,0.6)";
+			c.beginPath();
+			c.arc(X-14, Y+14, 10, 2 * Math.PI, false);
+			c.fill();
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Canvas
+	</title>
+</head>
+<body>
+	<canvas id="c" width="400" height="400">
+		
+	</canvas>
+
+	<script type="text/javascript">
+		var c = document.querySelector("#c");
+		var ctx = c.getContext('2d'); 
+		ctx.fillStyle = 'black'; 
+
+		for(var i=0; i<=300; i+=100)
+		{
+		  for(var j=0; j<=300; j+=100)
+		  	ctx.fillRect(i, j, 50, 50);
+		}
+		for(var i=50; i<=350; i+=100)
+		{
+		  for(var j=50; j<=350; j+=100)
+		  	ctx.fillRect(i, j, 50, 50);
+		}
+		
+		for(var i=50; i<=350; i+=100)
+		{
+		  for(var j=0; j<=300; j+=100)
+		  	ctx.strokeRect(i, j, 50, 50);
+		}
+		for(var i=0; i<=300; i+=100)
+		{
+		  for(var j=50; j<=350; j+=100)
+		  	ctx.strokeRect(i, j, 50, 50);
+		}
+	</script>
+</body>
+</html>

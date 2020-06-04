@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Canvas
+	</title>
+</head>
+<body>
+	<canvas>
+		
+	</canvas>
+
+	<script type="text/javascript">
+		var c = document.querySelector("canvas");
+		c.width = window.innerWidth;
+		c.height = window.innerHeight;
+
+		ctx = c.getContext("2d");
+
+		// arch(x, y, radius, startAng, endAng, counterClockwise)
+
+		for (var i =0; i <= 15; i++) {
+			var x = Math.random() * window.innerWidth;
+			var y = Math.random() * window.innerHeight;
+			ctx.beginPath();
+			ctx.strokeStyle = "blue";
+			ctx.arc(x, y, 30, 0, Math.PI, true);
+			ctx.stroke();
+		}
+		
+	</script>
+</body>
+</html>

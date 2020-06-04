@@ -33,11 +33,12 @@
 		DrawLogo();
 
 		function DrawLogo()
-		{
-			DrawSqaure();
-			
-			var X = 40, Y = 40, Radius = 22;
+		{	
+			var X = canvas.width/2, Y = canvas.height/2, Radius = 22;
+		
+			DrawSqaure(X,Y);
 			DrawBackgroundCircles(X,Y);
+			
 			c.fillStyle = "rgba(255,255,255,0.87)";
 			c.beginPath();
 			c.arc(X, Y, Radius, 2 * Math.PI, false);
@@ -81,10 +82,10 @@
 			c.fill();
 		}
 
-		function DrawSqaure()
+		function DrawSqaure(X,Y)
 		{
-			var rectX = 10;
-			var rectY = 10;
+			var rectX = X-30;
+			var rectY = Y-30;
 			var rectWidth = 60;
 			var rectHeight = 60;
 			var cornerRadius = 20;

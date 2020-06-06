@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Canvas Boilerplate | Chris Courses</title>
+	<style>
+	  body
+	  {
+	    margin: 0;
+	  }
+	</style>
+</head>
+<body>
+	<canvas>
+		
+	</canvas>
+	<script>
+		const canvas = document.querySelector('canvas')
+		const c = canvas.getContext('2d')
+
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+
+		function randomIntFromRange(min, max)
+		{
+		  return Math.floor(Math.random() * (max - min + 1) + min)
+		}
+
+		function randomColor(colors)
+		{
+		  return colors[Math.floor(Math.random() * colors.length)]
+		}
+
+		var length = 0.009, amplitude = 80, freq = 0.015;
+		var increment = freq;
+
+		function animate()
+		{
+			requestAnimationFrame(animate);
+
+			c.fillStyle = "White";
+			c.fillRect(0,0,canvas.width, canvas.height);
+
+			let x=0, y=0;
+			c.fillStyle = "#0060B4";
+			c.beginPath();
+			c.moveTo(0,0);
+			for(let i=0; i<=canvas.height*5; i++)
+			{
+				x+=1;
+				y+=1;
+				c.lineTo(x, y + Math.sin(i*length+increment)*amplitude);
+			}
+			c.lineTo(0,canvas.height);
+			c.lineTo(0,0);
+			c.fill();
+			increment += freq;
+		}
+		animate();
+	</script>
+</body>
+</html>
